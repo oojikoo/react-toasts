@@ -178,10 +178,22 @@ class Container extends Component {
           this.state.toasts.map(toast => {
             return (
               <Toast
-                key={toast.id}
                 className={'toast toast-' + toast.status + ' ' + toast.classNames}
+                key={toast.id}
                 style={style[toast.status]}
               >
+                <svg 
+                  className="symbol checked" 
+                  height="14" 
+                  width="14" 
+                  xmlns="http://www.w3.org/2000/svg" 
+                >
+                  <path
+                    d="M3.867 7.603L1.533 5.27a.656.656 0 0 0-.933 0 .656.656 0 0 0 0 .933l2.793 2.794c.26.26.68.26.94 0l7.067-7.06a.656.656 0 0 0 0-.934.656.656 0 0 0-.933 0l-6.6 6.6z"
+                    fill="#ffffff"
+                    fillRule="evenodd"
+                  />
+                </svg>
                 {toast.message}
               </Toast>
             );
