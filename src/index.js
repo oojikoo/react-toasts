@@ -4,17 +4,29 @@ import WatchableStore from 'watchable-stores';
 import PropType from 'prop-types';
 import styled, { keyframes } from 'styled-components';
 
-const FadeInUp = keyframes`
-  from {
+const FadeInOut = keyframes`
+  0% {
     opacity: 0;
     -webkit-transform: translate3d(0, 100%, 0);
     transform: translate3d(0, 100%, 0);
   }
 
-  to {
+  30% {
     opacity: 1;
     -webkit-transform: none;
     transform: none;
+  }
+
+  70% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+
+  100% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
   }
 `;
 
@@ -39,8 +51,8 @@ const Toast = styled.div`
   min-height: 50px;
   margin-bottom: 15px;
   border-radius: 5px;
-  animation-name: ${FadeInUp};
-  animation-duration: 1s;
+  animation-name: ${FadeInOut};
+  animation-duration: 3s;
   animation-fill-mode: both;
 `;
 
