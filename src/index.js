@@ -39,6 +39,16 @@ const Toasts = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  bottom: 10px;
+  right: 10px;
+
+  @media (max-width: 480px) {
+    align-items: flex-end;
+    justify-content: center;
+    right: 0px;
+    left: 0px;
+    bottom: 10px;
+  }
 `;
 
 const Toast = styled.div`
@@ -49,7 +59,7 @@ const Toast = styled.div`
   padding: 5px 15px;
   white-space: pre-line;
   min-height: 50px;
-  margin-bottom: 15px;
+  margin-bottom: 16px;
   border-radius: 5px;
   animation-name: ${FadeInOut};
   animation-duration: 3s;
@@ -115,20 +125,19 @@ const Store = () => {
 };
 
 class Container extends Component {
-  static POSITION = {
-    TOP_LEFT: "top_left",
-    TOP_RIGHT: "top_right",
-    BOTTOM_LEFT: "bottom_left",
-    BOTTOM_RIGHT: "bottom_right",
-    TOP_CENTER: "top_center",
-    BOTTOM_CENTER: "bottom_center",
-  };
+  // static POSITION = {
+  //   TOP_LEFT: "top_left",
+  //   TOP_RIGHT: "top_right",
+  //   BOTTOM_LEFT: "bottom_left",
+  //   BOTTOM_RIGHT: "bottom_right",
+  //   TOP_CENTER: "top_center",
+  //   BOTTOM_CENTER: "bottom_center",
+  // };
 
   constructor(props) {
     super(props);
 
     this.state = {
-      styles: {},
       toasts: []
     };
   }
@@ -142,40 +151,40 @@ class Container extends Component {
       }, data.timer || 3000);
     });
 
-    let styles = {};
-    switch (this.props.position) {
-      case Container.POSITION.TOP_LEFT:
-        styles.top = 10;
-        styles.left = 10;
-        break;
-      case Container.POSITION.TOP_RIGHT:
-        styles.top = 10;
-        styles.right = 10;
-        break;
-      case Container.POSITION.TOP_CENTER:
-        styles.top = 10;
-        styles.left = '50%';
-        styles.transform = 'translateX(-50%)';
-        break;
-      case Container.POSITION.BOTTOM_LEFT:
-        styles.bottom = 10;
-        styles.left = 10;
-        break;
-      case Container.POSITION.BOTTOM_RIGHT:
-        styles.bottom = 10;
-        styles.right = 10;
-        break;
-      case Container.POSITION.BOTTOM_CENTER:
-        styles.bottom = 10;
-        styles.left = '50%';
-        styles.transform = 'translateX(-50%)';
-        break;
-      default:
-        styles.bottom = 10;
-        styles.right = 10;
-        break;
-    }
-    this.setState({ styles: styles });
+    // let styles = {};
+    // switch (this.props.position) {
+    //   case Container.POSITION.TOP_LEFT:
+    //     styles.top = 10;
+    //     styles.left = 10;
+    //     break;
+    //   case Container.POSITION.TOP_RIGHT:
+    //     styles.top = 10;
+    //     styles.right = 10;
+    //     break;
+    //   case Container.POSITION.TOP_CENTER:
+    //     styles.top = 10;
+    //     styles.left = '50%';
+    //     styles.transform = 'translateX(-50%)';
+    //     break;
+    //   case Container.POSITION.BOTTOM_LEFT:
+    //     styles.bottom = 10;
+    //     styles.left = 10;
+    //     break;
+    //   case Container.POSITION.BOTTOM_RIGHT:
+    //     styles.bottom = 10;
+    //     styles.right = 10;
+    //     break;
+    //   case Container.POSITION.BOTTOM_CENTER:
+    //     styles.bottom = 10;
+    //     styles.left = '50%';
+    //     styles.transform = 'translateX(-50%)';
+    //     break;
+    //   default:
+    //     styles.bottom = 10;
+    //     styles.right = 10;
+    //     break;
+    // }
+    // this.setState({ styles: styles });
   }
 
   componentWillUnmount() {
@@ -185,7 +194,7 @@ class Container extends Component {
   _renderContainer() {
     const style = this.props.lightBackground ? LightBackgroundColor : BackgroundColor;
     return (
-      <Toasts style={this.state.styles}>
+      <Toasts>
         {
           this.state.toasts.map(toast => {
             return (

@@ -10,8 +10,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _templateObject = _taggedTemplateLiteral(['\n  0% {\n    opacity: 0;\n    -webkit-transform: translate3d(0, 100%, 0);\n    transform: translate3d(0, 100%, 0);\n  }\n\n  30% {\n    opacity: 1;\n    -webkit-transform: none;\n    transform: none;\n  }\n\n  70% {\n    opacity: 1;\n    -webkit-transform: none;\n    transform: none;\n  }\n\n  100% {\n    opacity: 0;\n    -webkit-transform: translate3d(0, 100%, 0);\n    transform: translate3d(0, 100%, 0);\n  }\n'], ['\n  0% {\n    opacity: 0;\n    -webkit-transform: translate3d(0, 100%, 0);\n    transform: translate3d(0, 100%, 0);\n  }\n\n  30% {\n    opacity: 1;\n    -webkit-transform: none;\n    transform: none;\n  }\n\n  70% {\n    opacity: 1;\n    -webkit-transform: none;\n    transform: none;\n  }\n\n  100% {\n    opacity: 0;\n    -webkit-transform: translate3d(0, 100%, 0);\n    transform: translate3d(0, 100%, 0);\n  }\n']),
-    _templateObject2 = _taggedTemplateLiteral(['\n  position: fixed;\n  overflow: hidden;\n  z-index: 9999;\n  max-height: calc(100vh - 10px);\n  text-align: right;\n  display: flex;\n  flex-direction: column;\n  align-items: flex-end;\n'], ['\n  position: fixed;\n  overflow: hidden;\n  z-index: 9999;\n  max-height: calc(100vh - 10px);\n  text-align: right;\n  display: flex;\n  flex-direction: column;\n  align-items: flex-end;\n']),
-    _templateObject3 = _taggedTemplateLiteral(['\n  font-family: \'Arial\';\n  display: flex;\n  align-items: center;\n  text-align: center;\n  padding: 5px 15px;\n  white-space: pre-line;\n  min-height: 50px;\n  margin-bottom: 15px;\n  border-radius: 5px;\n  animation-name: ', ';\n  animation-duration: 3s;\n  animation-fill-mode: both;\n'], ['\n  font-family: \'Arial\';\n  display: flex;\n  align-items: center;\n  text-align: center;\n  padding: 5px 15px;\n  white-space: pre-line;\n  min-height: 50px;\n  margin-bottom: 15px;\n  border-radius: 5px;\n  animation-name: ', ';\n  animation-duration: 3s;\n  animation-fill-mode: both;\n']);
+    _templateObject2 = _taggedTemplateLiteral(['\n  position: fixed;\n  overflow: hidden;\n  z-index: 9999;\n  max-height: calc(100vh - 10px);\n  text-align: right;\n  display: flex;\n  flex-direction: column;\n  align-items: flex-end;\n  bottom: 10px;\n  right: 10px;\n\n  @media (max-width: 480px) {\n    align-items: flex-end;\n    justify-content: center;\n    right: 0px;\n    left: 0px;\n    bottom: 10px;\n  }\n'], ['\n  position: fixed;\n  overflow: hidden;\n  z-index: 9999;\n  max-height: calc(100vh - 10px);\n  text-align: right;\n  display: flex;\n  flex-direction: column;\n  align-items: flex-end;\n  bottom: 10px;\n  right: 10px;\n\n  @media (max-width: 480px) {\n    align-items: flex-end;\n    justify-content: center;\n    right: 0px;\n    left: 0px;\n    bottom: 10px;\n  }\n']),
+    _templateObject3 = _taggedTemplateLiteral(['\n  font-family: \'Arial\';\n  display: flex;\n  align-items: center;\n  text-align: center;\n  padding: 5px 15px;\n  white-space: pre-line;\n  min-height: 50px;\n  margin-bottom: 16px;\n  border-radius: 5px;\n  animation-name: ', ';\n  animation-duration: 3s;\n  animation-fill-mode: both;\n'], ['\n  font-family: \'Arial\';\n  display: flex;\n  align-items: center;\n  text-align: center;\n  padding: 5px 15px;\n  white-space: pre-line;\n  min-height: 50px;\n  margin-bottom: 16px;\n  border-radius: 5px;\n  animation-name: ', ';\n  animation-duration: 3s;\n  animation-fill-mode: both;\n']);
 
 var _react = require('react');
 
@@ -110,13 +110,21 @@ var Store = function Store() {
 var Container = function (_Component) {
   _inherits(Container, _Component);
 
+  // static POSITION = {
+  //   TOP_LEFT: "top_left",
+  //   TOP_RIGHT: "top_right",
+  //   BOTTOM_LEFT: "bottom_left",
+  //   BOTTOM_RIGHT: "bottom_right",
+  //   TOP_CENTER: "top_center",
+  //   BOTTOM_CENTER: "bottom_center",
+  // };
+
   function Container(props) {
     _classCallCheck(this, Container);
 
     var _this = _possibleConstructorReturn(this, (Container.__proto__ || Object.getPrototypeOf(Container)).call(this, props));
 
     _this.state = {
-      styles: {},
       toasts: []
     };
     return _this;
@@ -137,40 +145,40 @@ var Container = function (_Component) {
         }, data.timer || 3000);
       });
 
-      var styles = {};
-      switch (this.props.position) {
-        case Container.POSITION.TOP_LEFT:
-          styles.top = 10;
-          styles.left = 10;
-          break;
-        case Container.POSITION.TOP_RIGHT:
-          styles.top = 10;
-          styles.right = 10;
-          break;
-        case Container.POSITION.TOP_CENTER:
-          styles.top = 10;
-          styles.left = '50%';
-          styles.transform = 'translateX(-50%)';
-          break;
-        case Container.POSITION.BOTTOM_LEFT:
-          styles.bottom = 10;
-          styles.left = 10;
-          break;
-        case Container.POSITION.BOTTOM_RIGHT:
-          styles.bottom = 10;
-          styles.right = 10;
-          break;
-        case Container.POSITION.BOTTOM_CENTER:
-          styles.bottom = 10;
-          styles.left = '50%';
-          styles.transform = 'translateX(-50%)';
-          break;
-        default:
-          styles.bottom = 10;
-          styles.right = 10;
-          break;
-      }
-      this.setState({ styles: styles });
+      // let styles = {};
+      // switch (this.props.position) {
+      //   case Container.POSITION.TOP_LEFT:
+      //     styles.top = 10;
+      //     styles.left = 10;
+      //     break;
+      //   case Container.POSITION.TOP_RIGHT:
+      //     styles.top = 10;
+      //     styles.right = 10;
+      //     break;
+      //   case Container.POSITION.TOP_CENTER:
+      //     styles.top = 10;
+      //     styles.left = '50%';
+      //     styles.transform = 'translateX(-50%)';
+      //     break;
+      //   case Container.POSITION.BOTTOM_LEFT:
+      //     styles.bottom = 10;
+      //     styles.left = 10;
+      //     break;
+      //   case Container.POSITION.BOTTOM_RIGHT:
+      //     styles.bottom = 10;
+      //     styles.right = 10;
+      //     break;
+      //   case Container.POSITION.BOTTOM_CENTER:
+      //     styles.bottom = 10;
+      //     styles.left = '50%';
+      //     styles.transform = 'translateX(-50%)';
+      //     break;
+      //   default:
+      //     styles.bottom = 10;
+      //     styles.right = 10;
+      //     break;
+      // }
+      // this.setState({ styles: styles });
     }
   }, {
     key: 'componentWillUnmount',
@@ -183,7 +191,7 @@ var Container = function (_Component) {
       var style = this.props.lightBackground ? LightBackgroundColor : BackgroundColor;
       return _react2.default.createElement(
         Toasts,
-        { style: this.state.styles },
+        null,
         this.state.toasts.map(function (toast) {
           return _react2.default.createElement(
             Toast,
@@ -220,16 +228,6 @@ var Container = function (_Component) {
 
   return Container;
 }(_react.Component);
-
-Container.POSITION = {
-  TOP_LEFT: "top_left",
-  TOP_RIGHT: "top_right",
-  BOTTOM_LEFT: "bottom_left",
-  BOTTOM_RIGHT: "bottom_right",
-  TOP_CENTER: "top_center",
-  BOTTOM_CENTER: "bottom_center"
-};
-
 
 Container.propTypes = {
   store: _propTypes2.default.object.isRequired,
