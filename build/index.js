@@ -9,9 +9,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(['\n  from {\n    opacity: 0;\n    -webkit-transform: translate3d(0, 100%, 0);\n    transform: translate3d(0, 100%, 0);\n  }\n\n  to {\n    opacity: 1;\n    -webkit-transform: none;\n    transform: none;\n  }\n'], ['\n  from {\n    opacity: 0;\n    -webkit-transform: translate3d(0, 100%, 0);\n    transform: translate3d(0, 100%, 0);\n  }\n\n  to {\n    opacity: 1;\n    -webkit-transform: none;\n    transform: none;\n  }\n']),
+var _templateObject = _taggedTemplateLiteral(['\n  0% {\n    opacity: 0;\n    -webkit-transform: translate3d(0, 100%, 0);\n    transform: translate3d(0, 100%, 0);\n  }\n\n  30% {\n    opacity: 1;\n    -webkit-transform: none;\n    transform: none;\n  }\n\n  70% {\n    opacity: 1;\n    -webkit-transform: none;\n    transform: none;\n  }\n\n  100% {\n    opacity: 0;\n    -webkit-transform: translate3d(0, 100%, 0);\n    transform: translate3d(0, 100%, 0);\n  }\n'], ['\n  0% {\n    opacity: 0;\n    -webkit-transform: translate3d(0, 100%, 0);\n    transform: translate3d(0, 100%, 0);\n  }\n\n  30% {\n    opacity: 1;\n    -webkit-transform: none;\n    transform: none;\n  }\n\n  70% {\n    opacity: 1;\n    -webkit-transform: none;\n    transform: none;\n  }\n\n  100% {\n    opacity: 0;\n    -webkit-transform: translate3d(0, 100%, 0);\n    transform: translate3d(0, 100%, 0);\n  }\n']),
     _templateObject2 = _taggedTemplateLiteral(['\n  position: fixed;\n  overflow: hidden;\n  z-index: 9999;\n  max-height: calc(100vh - 10px);\n  text-align: right;\n  display: flex;\n  flex-direction: column;\n  align-items: flex-end;\n'], ['\n  position: fixed;\n  overflow: hidden;\n  z-index: 9999;\n  max-height: calc(100vh - 10px);\n  text-align: right;\n  display: flex;\n  flex-direction: column;\n  align-items: flex-end;\n']),
-    _templateObject3 = _taggedTemplateLiteral(['\n  font-family: \'Arial\';\n  display: flex;\n  align-items: center;\n  text-align: center;\n  padding: 5px 15px;\n  white-space: pre-line;\n  min-height: 50px;\n  margin-bottom: 15px;\n  border-radius: 5px;\n  animation-name: ', ';\n  animation-duration: 1s;\n  animation-fill-mode: both;\n'], ['\n  font-family: \'Arial\';\n  display: flex;\n  align-items: center;\n  text-align: center;\n  padding: 5px 15px;\n  white-space: pre-line;\n  min-height: 50px;\n  margin-bottom: 15px;\n  border-radius: 5px;\n  animation-name: ', ';\n  animation-duration: 1s;\n  animation-fill-mode: both;\n']);
+    _templateObject3 = _taggedTemplateLiteral(['\n  font-family: \'Arial\';\n  display: flex;\n  align-items: center;\n  text-align: center;\n  padding: 5px 15px;\n  white-space: pre-line;\n  min-height: 50px;\n  margin-bottom: 15px;\n  border-radius: 5px;\n  animation-name: ', ';\n  animation-duration: 3s;\n  animation-fill-mode: both;\n'], ['\n  font-family: \'Arial\';\n  display: flex;\n  align-items: center;\n  text-align: center;\n  padding: 5px 15px;\n  white-space: pre-line;\n  min-height: 50px;\n  margin-bottom: 15px;\n  border-radius: 5px;\n  animation-name: ', ';\n  animation-duration: 3s;\n  animation-fill-mode: both;\n']);
 
 var _react = require('react');
 
@@ -43,11 +43,11 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var FadeInUp = (0, _styledComponents.keyframes)(_templateObject);
+var FadeInOut = (0, _styledComponents.keyframes)(_templateObject);
 
 var Toasts = _styledComponents2.default.div(_templateObject2);
 
-var Toast = _styledComponents2.default.div(_templateObject3, FadeInUp);
+var Toast = _styledComponents2.default.div(_templateObject3, FadeInOut);
 
 var BackgroundColor = {
   success: {
